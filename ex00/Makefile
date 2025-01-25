@@ -20,10 +20,7 @@ CPPFLAGS	+=	-iquote .
 BDIR	=	.build/release
 
 SRC	=	mains/main.cpp
-SRC	+=	Phaser.cpp
-SRC	+=	Skat.cpp
-SRC	+=	KreogCom.cpp
-SRC	+=	Squad.cpp
+SRC	+=	Droid.cpp
 
 OBJ = $(SRC:%.cpp=$(BDIR)/%.o)
 
