@@ -41,7 +41,7 @@ Droid::Droid(const Droid& droid):
 
 bool Droid::operator==(const Droid& other) const
 {
-    return this->getStatus() == other.getStatus();
+    return *this->getStatus() == *other.getStatus();
 }
 
 bool Droid::operator!=(const Droid& other) const
