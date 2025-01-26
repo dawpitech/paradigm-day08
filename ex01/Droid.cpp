@@ -21,6 +21,7 @@ Droid::Droid(std::string serial)
 
 Droid::~Droid()
 {
+    delete this->_battleData;
     delete this->_status;
     std::cout << "Droid '" << this->_id << "' Destroyed\n";
 }
