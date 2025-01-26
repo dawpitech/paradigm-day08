@@ -5,6 +5,7 @@
 ** Droid.cpp
 */
 
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 
@@ -47,19 +48,16 @@ bool Droid::operator!=(const Droid& other) const
     return !(this == &other);
 }
 
-size_t& Droid::operator<<(size_t& energy_provided)
+size_t& Droid::operator<<(size_t& given)
 {
-    auto energy_needed = 100 - this->_energy;
-
-    if (energy_provided < energy_needed){
-        const auto ep_copy = energy_provided;
-        this->_energy += energy_provided;
-        energy_provided -= ep_copy;
+    if (const auto needed = 100 - this->_energy; given < needed){
+        this->_energy += given;
+        given = 0;
     } else {
-        this->_energy += energy_needed;
-        energy_provided -= energy_needed;
+        this->_energy += needed;
+        given -= needed;
     }
-    return energy_provided;
+    return given;
 }
 
 std::ostream& operator<<(std::ostream& lhs, const Droid& rhs)
@@ -75,4 +73,13 @@ Droid& Droid::operator=(const Droid& droid)
     this->_energy = droid._energy;
     this->_status = droid._status;
     return *this;
+}
+
+void Droid::setEnergy(size_t energy)
+{
+    this->_energy = std::clamp(
+        energy,
+        static_cast<size_t>(0),
+        static_cast<size_t>(100)
+    );
 }

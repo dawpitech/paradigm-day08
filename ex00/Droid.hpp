@@ -19,7 +19,7 @@ public:
 
     bool operator==(const Droid& other) const;
     bool operator!=(const Droid& other) const;
-    size_t& operator<<(size_t& value);
+    size_t& operator<<(size_t& given);
     Droid& operator=(const Droid& droid);
 
     std::string getId() const { return this->_id; }
@@ -29,7 +29,7 @@ public:
     std::string* getStatus() const { return this->_status; }
 
     void setId(std::string id) { this->_id = id; }
-    void setEnergy(size_t energy) { this->_energy = energy; }
+    void setEnergy(size_t energy);
     void setStatus(std::string* status) { this->_status = status; }
 
     protected:
