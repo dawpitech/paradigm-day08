@@ -72,7 +72,6 @@ Droid& Droid::operator=(const Droid& droid)
 {
     this->_id = droid._id;
     this->_energy = droid._energy;
-    delete this->_status;
     this->_status = new std::string(*droid._status);
     return *this;
 }
