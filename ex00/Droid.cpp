@@ -39,7 +39,7 @@ bool Droid::operator==(const Droid& other) const
         && this->getEnergy() == other.getEnergy()
         && this->getAttack() == other.getAttack()
         && this->getToughness() == other.getToughness()
-        && this->getStatus() == other.getStatus();
+        && *this->getStatus() == *other.getStatus();
 }
 
 bool Droid::operator!=(const Droid& other) const
@@ -71,6 +71,7 @@ Droid& Droid::operator=(const Droid& droid)
 {
     this->_id = droid._id;
     this->_energy = droid._energy;
+    delete this->_status;
     this->_status = droid._status;
     return *this;
 }
