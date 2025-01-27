@@ -46,7 +46,7 @@ bool Droid::operator==(const Droid& other) const
 bool Droid::operator!=(const Droid& other) const
 {
     // ReSharper disable once CppRedundantComplexityInComparison
-    return !(this == &other);
+    return !operator==(other);
 }
 
 size_t& Droid::operator<<(size_t& given)
