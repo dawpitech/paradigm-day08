@@ -77,6 +77,7 @@ Droid& Droid::operator=(const Droid& droid)
     this->_id = droid._id;
     this->_energy = droid._energy;
     this->_status = droid._status;
+    this->_battleData = droid._battleData;
     return *this;
 }
 

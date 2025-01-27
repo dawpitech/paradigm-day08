@@ -15,11 +15,11 @@ class DroidMemory
         explicit DroidMemory();
         DroidMemory(const DroidMemory& other);
         DroidMemory& operator<<(DroidMemory &other);
-        DroidMemory& operator>>(DroidMemory &other) const;
-        DroidMemory& operator+=(DroidMemory& other);
-        DroidMemory& operator+=(size_t exp);
-        DroidMemory& operator+(DroidMemory& other);
-        DroidMemory& operator+(size_t exp);
+        const DroidMemory& operator>>(DroidMemory &other) const;
+        const DroidMemory& operator+=(DroidMemory& other);
+        const DroidMemory& operator+=(size_t exp);
+        DroidMemory operator+(const DroidMemory& other) const;
+        DroidMemory operator+(size_t exp) const;
 
         size_t getFingerprint() const { return this->_fingerprint; }
         size_t getExp() const { return this->_exp; }

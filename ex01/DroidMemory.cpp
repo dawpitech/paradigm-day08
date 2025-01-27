@@ -26,33 +26,41 @@ DroidMemory& DroidMemory::operator<<(DroidMemory& other)
     return *this;
 }
 
-DroidMemory& DroidMemory::operator>>(DroidMemory& other) const
+const DroidMemory& DroidMemory::operator>>(DroidMemory& other) const
 {
     other.setExp(this->getExp() + other.getExp());
     other.setFingerprint(other.getFingerprint() ^ this->getFingerprint());
-    return other;
+    return *this;
 }
 
-DroidMemory& DroidMemory::operator+=(DroidMemory& other)
+const DroidMemory& DroidMemory::operator+=(DroidMemory& other)
 {
-    return *this << other;
+    this->setExp(this->getExp() + other.getExp());
+    this->setFingerprint(other.getFingerprint() ^ this->getFingerprint());
+    return *this;
 }
 
-DroidMemory& DroidMemory::operator+=(size_t exp)
+const DroidMemory& DroidMemory::operator+=(size_t exp)
 {
     this->setExp(this->getExp() + exp);
     this->setFingerprint(this->getFingerprint() ^ exp);
     return *this;
 }
 
-DroidMemory& DroidMemory::operator+(DroidMemory& other)
+DroidMemory DroidMemory::operator+(const DroidMemory& other) const
 {
-    return DroidMemory(*this) += other;
+    DroidMemory mem(*this);
+    mem.setExp(mem.getExp() + other.getExp());
+    mem.setFingerprint(mem.getFingerprint() ^ other.getFingerprint());
+    return mem;
 }
 
-DroidMemory& DroidMemory::operator+(size_t exp)
+DroidMemory DroidMemory::operator+(const size_t exp) const
 {
-    return DroidMemory(*this) += exp;
+    DroidMemory mem(*this);
+    mem.setExp(mem.getExp() + exp);
+    mem.setFingerprint(mem.getFingerprint() + exp);
+    return mem;
 }
 
 std::ostream &operator<<(std::ostream& os, const DroidMemory &droid_memory)
