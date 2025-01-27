@@ -47,7 +47,7 @@ DroidMemory& DroidMemory::operator+=(size_t exp)
 
 DroidMemory& DroidMemory::operator+(DroidMemory& other)
 {
-    return DroidMemory(other) += other;
+    return DroidMemory(*this) += other;
 }
 
 DroidMemory& DroidMemory::operator+(size_t exp)
